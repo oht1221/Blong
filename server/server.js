@@ -1,5 +1,12 @@
-import app from "./app";
+const app = require('./app');
+const config = require('./config');
+const dbConnect = require('./models');
+const { PORT } = config;
 
-app.listen("7000", () => {
-    console.log("hi");
+dbConnect();
+
+app.set('port', PORT || 7000);
+
+app.listen(app.get('port'), () => {
+    console.log(`Server listening at port: ${app.get('port')}`);
 })

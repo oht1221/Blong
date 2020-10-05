@@ -111,7 +111,7 @@ const authReducer = (state = initialState, action) => {
                 isAuthenticated: true,
                 isLoading: false,
                 user: action.payload,
-                userID: action.payload._id,
+                userId: action.payload._id,
                 userName: action.payload.name,
                 userRole: action.payload.role
             };

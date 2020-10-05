@@ -19,6 +19,7 @@ import { Link } from 'react-router-dom'
 import LoginModal from './auth/LoginModal'
 import { LOGOUT_REQUEST } from '../redux/types'
 import JoinModal from './auth/JoinModal'
+import { WRITE_POST_REQUEST } from '../redux/types';
 
 const AppNavbar = () => {   
     const [isOpen, setIsOpen] = useState(false);
@@ -41,16 +42,18 @@ const AppNavbar = () => {
         setIsOpen(!isOpen);
     }
 
-    const addPost = () => {
-
-    }
+    const onClickAddPost = () => {
+        dispatch({
+            type: WRITE_POST_REQUEST
+        });
+    };
 
     const authLink = (
         <Fragment>
             <NavItem>
                 {userRole === 'Super' ? (
                     <Form className="col mt-2">
-                        <Link to="post" className="btn btn-success block text-white px-3" onClick={addPost}>
+                        <Link to="/post" className="btn btn-success block text-white px-3" onClick={onClickAddPost}>
                         Add Post
                         </Link>
                     </Form>
@@ -59,11 +62,9 @@ const AppNavbar = () => {
             <NavItem className="d-flex justify-content-center">
                 <Form className="col mt-2">
                     {user && user.name ? (
-                        <Link>
                         <Button outline color="light" className="px-3" block>
                             <strong>{user ? `Welcome ${user.name}` : ""}</strong>
                         </Button>
-                        </Link>
                     ) : (
                         <Button outline color="light" className="px-3" block>
                             <strong> No such user! </strong>
@@ -72,7 +73,7 @@ const AppNavbar = () => {
                 </Form> 
             </NavItem>
             <NavItem>
-                <Form clasName="col">
+                <Form className="col">
                     <Link onClick={onLogout} to="#">
                         <Button outline color="light" className="mt-2" block>
                             Logout

@@ -7,12 +7,7 @@ const CommentSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-
-    date: {
-        type: Date,
-        default: moment().format("YYYY-MM-DD hh:mm:ss")
-    },
-
+    
     post: {
         type: ObjectId,
         ref: "post"

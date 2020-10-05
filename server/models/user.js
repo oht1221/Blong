@@ -33,11 +33,11 @@ const UserSchema = new mongoose.Schema({
         {
             post_id: {
                 type: mongoose.Schema.Types.ObjectId,
-                ref: "posts"
+                ref: "post"
             },
             comment_id: {
                 type: mongoose.Schema.Types.ObjectId,
-                ref: "comments"
+                ref: "comment"
             }
         }
     ],
@@ -45,7 +45,7 @@ const UserSchema = new mongoose.Schema({
     posts: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "posts"
+            ref: "post"
         }
     ]
 });

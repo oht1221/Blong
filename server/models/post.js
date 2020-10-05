@@ -32,7 +32,7 @@ const PostSchema = new mongoose.Schema({
     comments: [
         {
             type: ObjectId,
-            ref: "post"
+            ref: "comment"
         }
     ],
 
